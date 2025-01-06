@@ -1,6 +1,7 @@
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Redirect, Route} from 'react-router-dom'
 import Home from './components/Home'
 import Register from './components/Register'
+import NotFound from './components/NotFound'
 
 const topicsList = [
   {id: 'ARTS_AND_CULTURE', displayText: 'Arts and Culture'},
@@ -18,6 +19,8 @@ const App = () => (
       path="/register"
       render={props => <Register {...props} topicsList={topicsList} />}
     />
+    <Route exact path="/bad-path" component={NotFound} />
+    <Redirect to="/bad-path" />
   </Switch>
 )
 

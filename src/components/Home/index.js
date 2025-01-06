@@ -1,47 +1,48 @@
-import {useLocation, useHistory} from 'react-router-dom'
+import {useLocation, Link} from 'react-router-dom'
+import {
+  Container,
+  NavBar,
+  Logo,
+  ContentWrapper,
+  Heading,
+  Paragraph,
+  RegisterButton,
+  MeetupImage,
+} from './styledComponents'
 
-const Home = ({name, topic}) => {
+const Home = () => {
   const location = useLocation()
-  const history = useHistory()
-
-  const {name: locationName, topic: locationTopic} = location.state || {}
-  const displayName = locationName || name
-  const displayTopic = locationTopic || topic
+  const {name, topic} = location.state || {}
 
   return (
-    <div>
-      <nav>
-        <img
+    <Container>
+      <NavBar>
+        <Logo
           src="https://assets.ccbp.in/frontend/react-js/meetup/website-logo-img.png"
           alt="website logo"
         />
-      </nav>
-      <div>
-        {displayName && displayTopic ? (
+      </NavBar>
+      <ContentWrapper>
+        {name && topic ? (
           <>
-            <h1>Hello {displayName}</h1>
-            <p>Welcome to {displayTopic}</p>
+            <Heading>Hello {name}</Heading>
+            <Paragraph>Welcome to {topic}</Paragraph>
           </>
         ) : (
           <>
-            <h1>Welcome to Meetup</h1>
-            <p>Please register for the topic</p>
-            <button
-              onClick={() => {
-                history.push('/register')
-              }}
-              type="button"
-            >
-              Register
-            </button>
-            <img
+            <Heading>Welcome to Meetup</Heading>
+            <Paragraph>Please register for the topic</Paragraph>
+            <Link to="/register">
+              <RegisterButton>Register</RegisterButton>
+            </Link>
+            <MeetupImage
               src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
               alt="meetup"
             />
           </>
         )}
-      </div>
-    </div>
+      </ContentWrapper>
+    </Container>
   )
 }
 
