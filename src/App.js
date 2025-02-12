@@ -19,7 +19,7 @@ const App = () => (
       path="/register"
       render={props => <Register {...props} topicsList={topicsList} />}
     />
-    <Route exact path="/bad-path" component={NotFound} />
+    <Route path="*" component={NotFound} />
     <Redirect to="/bad-path" />
   </Switch>
 )

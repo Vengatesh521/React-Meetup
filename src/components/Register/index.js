@@ -30,15 +30,21 @@ const Register = ({topicsList}) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    if (name.trim() === '' || topic.trim() === '') {
-      setErrorMsg('Please enter your name and select a topic')
+    if (name.trim() === '') {
+      setErrorMsg('Please enter your name') // Updated error message
+    } else if (topic.trim() === '') {
+      setErrorMsg('Please select a topic')
     } else {
       setErrorMsg('')
       // Find the topic's displayText
       const selectedTopic =
         topicsList.find(eachTopic => eachTopic.id === topic)?.displayText || ''
       // Navigate with the name and topic value
-      history.replace('/', {name, topic: selectedTopic})
+      localStorage.setItem('name', name)
+      localStorage.setItem('topic', selectedTopic)
+
+      // Navigate to Home page
+      history.replace('/')
     }
   }
 

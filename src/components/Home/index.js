@@ -1,4 +1,4 @@
-import {useLocation, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {
   Container,
   NavBar,
@@ -11,8 +11,8 @@ import {
 } from './styledComponents'
 
 const Home = () => {
-  const location = useLocation()
-  const {name, topic} = location.state || {}
+  const name = localStorage.getItem('name') || ''
+  const topic = localStorage.getItem('topic') || ''
 
   return (
     <Container>
@@ -35,12 +35,12 @@ const Home = () => {
             <Link to="/register">
               <RegisterButton>Register</RegisterButton>
             </Link>
-            <MeetupImage
-              src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
-              alt="meetup"
-            />
           </>
         )}
+        <MeetupImage
+          src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
+          alt="meetup"
+        />
       </ContentWrapper>
     </Container>
   )

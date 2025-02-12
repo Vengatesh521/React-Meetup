@@ -103,3 +103,9 @@ export const FormWrapper = styled.form`
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `
+export const StyledOption = styled.option`
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  padding: 5px;
+`
